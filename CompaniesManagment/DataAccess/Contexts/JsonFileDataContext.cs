@@ -1,6 +1,8 @@
-﻿namespace CompaniesManagment.DataAccess.Contexts
+﻿using CompaniesManagment.DataAccess.Patterns;
+
+namespace CompaniesManagment.DataAccess.Contexts
 {
-    internal class JsonFileDataContext
+    internal class JsonFileDataContext:Singleton<JsonFileDataContext>
     {
         
     }
