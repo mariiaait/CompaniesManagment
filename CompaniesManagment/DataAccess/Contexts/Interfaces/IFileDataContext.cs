@@ -2,6 +2,6 @@
 {
     internal interface IFileDataContext
     {
-        void CreateOrDefault();
+        void ConnectOrDefault();
     }
 }
