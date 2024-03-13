@@ -2,5 +2,6 @@
 {
     internal interface IFileDataContext
     {
+        void CreateOrDefault();
     }
 }
