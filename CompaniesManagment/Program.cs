@@ -1,5 +1,7 @@
 ﻿using CompaniesManagment.DataAccess.Contexts;
+using CompaniesManagment.DataAccess.Domains;
 using CompaniesManagment.Infrastructure.Initializer;
+using System.Text.Json;
 
 namespace CompaniesManagment
 {
@@ -9,11 +11,10 @@ namespace CompaniesManagment
         {
             string path = @"..\..\..\Tools\data.json";
             string testToolsPath = @"..\..\..\Tools\TestTools\testData.json";
-            //string path = Path.Combine(Directory.GetCurrentDirectory(), "Tools") + "\\data.json";
 
             JsonFileDataContext jsonFileContext = new JsonFileDataContext(path);
             jsonFileContext.CreateOrDefault();
-            Initializer.Initialize(path, testToolsPath);
+            Initializer.Initialize(testToolsPath, path);
         }
     }
 }
