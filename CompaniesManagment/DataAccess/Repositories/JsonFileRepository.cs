@@ -10,7 +10,7 @@ namespace CompaniesManagment.DataAccess.Repositories
             throw new NotImplementedException();
         }
 
-        public void Delete(Company company)
+        public void Delete(Guid id)
         {
             throw new NotImplementedException();
         }
@@ -20,7 +20,12 @@ namespace CompaniesManagment.DataAccess.Repositories
             throw new NotImplementedException();
         }
 
-        public Company GetById(int id)
+        public Company GetById(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Employee GetEmployeesById(Guid id)
         {
             throw new NotImplementedException();
         }

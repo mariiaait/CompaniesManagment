@@ -7,8 +7,8 @@ namespace CompaniesManagment.DataAccess.Repositories.Interfaces
         List<Company> Get();
         void Add(Company company);
         void Update(Company company);
-        void Delete(Company company);
-        Company GetById(int id);
-
+        void Delete(Guid id);
+        Company GetById(Guid id);
+        Employee GetEmployeesById (Guid id);
     }
 }
