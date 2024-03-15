@@ -11,7 +11,7 @@ namespace CompaniesManagment.DataAccess.Contexts
         public JsonFileDataContext(string path)
         {
             Path = path;
-        }
+        }       
 
         public void ConnectOrDefault()
         {
