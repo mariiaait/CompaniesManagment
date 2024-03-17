@@ -13,8 +13,8 @@ namespace CompaniesManagment.Infrastructure.Initializer
             {
                deserializedData = JsonSerializer.Deserialize<List<Company>>(fileStream);
             }
-
-            using (FileStream fileStream = new FileStream(toFile, FileMode.OpenOrCreate))
+            // Tmp note: https://stackoverflow.com/questions/52020383/filestreams-filemode-openorcreate-overwrites-file
+            using (FileStream fileStream = new FileStream(toFile, FileMode.Create))
             {
                 JsonSerializer.Serialize(fileStream, deserializedData, new JsonSerializerOptions{
                     WriteIndented = true });
