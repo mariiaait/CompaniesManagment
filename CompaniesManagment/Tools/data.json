@@ -1,41 +1,5 @@
 [
   {
-    "Id": "e3cdbb36-3d15-4f39-8303-f29b83c745a8",
-    "NameCompany": "ABCSoft",
-    "Employees": [
-      {
-        "Id": "0556f5fb-32d9-4732-8825-2f5997e81912",
-        "Name": "Milton",
-        "Age": 26,
-        "Position": "Pyton Developer"
-      },
-      {
-        "Id": "c8851d30-24d2-4afc-a727-55453c98b0c7",
-        "Name": "Brian",
-        "Age": 45,
-        "Position": "PM"
-      },
-      {
-        "Id": "f30f8f8e-a1a9-460a-9031-47479f54e96b",
-        "Name": "Daisy",
-        "Age": 33,
-        "Position": "Pyton Developer"
-      },
-      {
-        "Id": "43580245-b5fb-441b-b6af-e55efea1b424",
-        "Name": "Harold",
-        "Age": 23,
-        "Position": "Java Developer"
-      },
-      {
-        "Id": "a020cdbb-9da4-460c-b09b-5858afde96b6",
-        "Name": "Vicki",
-        "Age": 30,
-        "Position": "Java Developer"
-      }
-    ]
-  },
-  {
     "Id": "32e0adfd-d4a5-4bec-9edd-8702ecf737d8",
     "NameCompany": "CDESoft",
     "Employees": [
@@ -358,5 +322,10 @@
         "Position": "QA"
       }
     ]
+  },
+  {
+    "Id": "fea2913f-f026-4e08-9c2b-31508202cd9e",
+    "NameCompany": "987Soft",
+    "Employees": null
   }
 ]

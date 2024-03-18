@@ -1,8 +1,6 @@
-﻿using CompaniesManagment.DataAccess.Contexts;
-using CompaniesManagment.DataAccess.Contexts.Interfaces;
+﻿using CompaniesManagment.DataAccess.Contexts.Interfaces;
 using CompaniesManagment.DataAccess.Domains;
 using CompaniesManagment.DataAccess.Repositories.Interfaces;
-using CompaniesManagment.Sharable;
 using System.Text.Json;
 
 namespace CompaniesManagment.DataAccess.Repositories
@@ -18,12 +16,20 @@ namespace CompaniesManagment.DataAccess.Repositories
 
         public void Add(Company company)
         {
-            throw new NotImplementedException();
+            var companies = Get();
+            if(!companies.Any(currentCompany => currentCompany.NameCompany == company.NameCompany))
+            {
+                companies.Add(company);
+                Serialize(companies);
+            }
         }
 
         public void Delete(Guid id)
         {
-            throw new NotImplementedException();
+            var companies = Get();
+            var company = companies?.FirstOrDefault(company => company.Id == id);
+            if (company != null) { companies.Remove(company); }
+            Serialize(companies);
         }
 
         public List<Company>? Get()
@@ -34,19 +40,27 @@ namespace CompaniesManagment.DataAccess.Repositories
             }
         }
 
-        public Company GetById(Guid id)
+        public Company? GetById(Guid id)
         {
-            throw new NotImplementedException();
+            return Get()?.FirstOrDefault(company => company.Id == id);
         }
 
-        public Employee GetEmployeesById(Guid id)
+        public List<Employee>? GetEmployeesById(Guid id)
         {
-            throw new NotImplementedException();
+            return Get()?.FirstOrDefault(company => company.Id == id)?.Employees;
         }
 
         public void Update(Company company)
         {
             throw new NotImplementedException();
+        }
+
+        private void Serialize(List<Company> companies)
+        {
+            using (FileStream fileStream = new FileStream(_context.Path, FileMode.Create))
+            {
+                JsonSerializer.Serialize(fileStream, companies, new JsonSerializerOptions {WriteIndented = true});
+            }
         }
     }
 }
