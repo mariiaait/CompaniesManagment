@@ -52,7 +52,19 @@ namespace CompaniesManagment.DataAccess.Repositories
 
         public void Update(Company company)
         {
-            throw new NotImplementedException();
+            var companies = Get();
+            if (companies.Any(currentCompany => currentCompany.Id == company.Id))
+            {
+                Serialize(companies.Select(currentCompany => 
+                currentCompany.Id == company.Id ? company : currentCompany).ToList());
+                return;
+            }
+
+            if (!companies.Any(currentCompany => currentCompany.NameCompany == company.NameCompany))
+            {
+                companies.Add(company);
+                Serialize(companies);
+            }
         }
 
         private void Serialize(List<Company> companies)
