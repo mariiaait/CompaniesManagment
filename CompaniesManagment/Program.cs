@@ -18,7 +18,7 @@ namespace CompaniesManagment
             IFileRepository repository = new JsonFileRepository(context);
 
             Console.WriteLine("Testing Get() - list of all companies");
-            printCompanies();
+            PrintCompanies(repository.Get());
 
 
             Console.WriteLine("\nTesting GetById");
@@ -35,22 +35,30 @@ namespace CompaniesManagment
 
             Console.WriteLine("\nTesting Add - adding new company 987Soft");
             repository.Add(new Company { NameCompany = "987Soft", Employees = null });
-            printCompanies();
+            PrintCompanies(repository.Get());
 
 
             Console.WriteLine("\nTesting Delete - deleted ABCSoft");
             repository.Delete(new Guid("e3cdbb36-3d15-4f39-8303-f29b83c745a8"));
-            printCompanies();
+            PrintCompanies(repository.Get());
 
 
-            void printCompanies()
+            Console.WriteLine("\nTesting Update - updating FGHSoft");
+            repository.Update(new Company {Id= new Guid("576a2174-a6bb-4124-a01e-35780d8d4263"),
+                NameCompany = "FGHSoft123", Employees = null });
+            PrintCompanies(repository.Get());
+
+            Console.WriteLine("\nTesting Update - updating FGHSoft with random guid");
+            repository.Update(new Company {NameCompany = "FGHSoft", Employees = null });
+            PrintCompanies(repository.Get());
+
+        }
+
+        static void PrintCompanies(List<Company> companies)
+        {
+            foreach (var company in companies)
             {
-                var companies = repository.Get();
-
-                foreach (var company in companies)
-                {
-                    Console.WriteLine(company.NameCompany);
-                }
+                Console.WriteLine(company.NameCompany);
             }
         }
     }
