@@ -1,8 +1,12 @@
-﻿using CompaniesManagment.DataAccess.Contexts;
+﻿using CompaniesManagment.Application.Services;
+using CompaniesManagment.Application.Services.Interfaces;
+using CompaniesManagment.DataAccess.Contexts;
 using CompaniesManagment.DataAccess.Domains;
 using CompaniesManagment.DataAccess.Repositories;
 using CompaniesManagment.DataAccess.Repositories.Interfaces;
 using CompaniesManagment.Infrastructure.Initializer;
+using CompaniesManagment.Infrastructure.Logging;
+using CompaniesManagment.Infrastructure.Logging.LogLevels;
 using CompaniesManagment.Sharable;
 
 namespace CompaniesManagment
@@ -52,6 +56,10 @@ namespace CompaniesManagment
             repository.Update(new Company {NameCompany = "FGHSoft", Employees = null });
             PrintCompanies(repository.Get());
 
+            Logger logger = new Logger(Configuration.RELATIVE_PATH_TO_LOGS);
+            IFileService service = new JsonFileService(repository, logger);
+
+            service.Add(new Company { NameCompany = "Soft987", Employees = null });
         }
 
         static void PrintCompanies(List<Company> companies)

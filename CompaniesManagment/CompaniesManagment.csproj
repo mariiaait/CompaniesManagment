@@ -9,10 +9,8 @@
 
   <ItemGroup>
     <Folder Include="Infrastructure\Exceptions\" />
-    <Folder Include="Presentation\ResponseModel\" />
     <Folder Include="Tools\TestTools\" />
     <Folder Include="Tools\Logs\" />
-    <Folder Include="Infrastructure\Logging\" />
   </ItemGroup>
 
 </Project>

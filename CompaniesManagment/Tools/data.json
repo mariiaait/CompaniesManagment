@@ -293,13 +293,18 @@
     ]
   },
   {
-    "Id": "a5a34e77-a52d-4295-a345-4d16e5e4b39a",
+    "Id": "5f89a2d2-4bd9-49ee-a8a3-15b9aa1e2c70",
     "NameCompany": "987Soft",
     "Employees": null
   },
   {
-    "Id": "580ffaff-33b5-4ba6-9972-b7bbe745c475",
+    "Id": "b44118e1-6bc4-4603-bb48-fe45d2391df8",
     "NameCompany": "FGHSoft",
+    "Employees": null
+  },
+  {
+    "Id": "e177099a-e17a-4c49-bd7d-6622888d1ce0",
+    "NameCompany": "Soft987",
     "Employees": null
   }
 ]
