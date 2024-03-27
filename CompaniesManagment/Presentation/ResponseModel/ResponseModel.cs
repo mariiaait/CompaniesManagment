@@ -4,13 +4,18 @@
     {
         private readonly bool _isSuccess;
         private readonly T _response;
-        private readonly List<Exception> _errors;
+        private readonly Exception _error;
 
-        public ResponseModel(bool isSuccess, T response, List<Exception> errors)
+        public ResponseModel(bool isSuccess, T response, Exception error)
         {
             _isSuccess = isSuccess;
             _response = response;
-            _errors = errors;
+            _error = error;
+        }
+
+        public override string ToString()
+        {
+            return $"isSuccess: {_isSuccess}, response: {_response}, error: {_error}";
         }
     }
 }
