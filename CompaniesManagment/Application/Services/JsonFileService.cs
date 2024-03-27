@@ -2,6 +2,7 @@
 using CompaniesManagment.DataAccess.Domains;
 using CompaniesManagment.DataAccess.Repositories.Interfaces;
 using CompaniesManagment.Infrastructure.Logging;
+using CompaniesManagment.Presentation.ResponseModel;
 
 namespace CompaniesManagment.Application.Services
 {
@@ -15,87 +16,93 @@ namespace CompaniesManagment.Application.Services
             _repository = repository;
             _logger = logger;
         }
-        public void Add(Company company)
+        public ResponseModel<bool> Add(Company company)
         {
             try
             {
                 _repository.Add(company);
                 _logger.Info($"New company {company} was added to file.");
+                return new ResponseModel<bool>(true, true, null);
             }
             catch(Exception ex) 
             {
                 _logger.Error(ex.Message);
+                return new ResponseModel<bool>(false, false, ex);
             }
         }
 
-        public void Delete(Guid id)
+        public ResponseModel<bool> Delete(Guid id)
         {
             try
             {
                 _repository.Delete(id);
                 _logger.Info($"The company with id {id} was deleted from file.");
+                return new ResponseModel<bool>(true, true, null);
             }
             catch (Exception ex)
             {
                 _logger.Error(ex.Message);
+                return new ResponseModel<bool>(false, false, ex);
             }
         }
 
-        public List<Company>? Get()
+        public ResponseModel<List<Company>>? Get()
         {
             try
             {
-                var result = _repository.Get();
+                List<Company>? result = _repository.Get();
                 _logger.Info($"The companies got succeful.");
-                return result;
+                return new ResponseModel<List<Company>>(true, result, null);
             }
             catch (Exception ex)
             {
                 _logger.Error(ex.Message);
-                return null;
+                return new ResponseModel<List<Company>>(false, null, ex);
             }
         }
 
-        public Company? GetById(Guid id)
+        public ResponseModel<Company>? GetById(Guid id)
         {
             try
             {
                 var result = _repository.GetById(id);
                 _logger.Info($"The company with id {id} was getting.");
-                return result;
+                return new ResponseModel<Company>(true, result, null);
             }
             catch (Exception ex)
             {
                 _logger.Error(ex.Message);
-                return null;
+                return new ResponseModel<Company>(false, null, ex);
             }
         }
 
-        public List<Employee>? GetEmployeesById(Guid id)
+        public ResponseModel<List<Employee>>? GetEmployeesById(Guid id)
         {
             try
             {
                 var result = _repository.GetEmployeesById(id);
                 _logger.Info($"The employees with id {id} was getting.");
-                return result;
+                return new ResponseModel<List<Employee>>(true, result, null); ;
             }
             catch (Exception ex)
             {
                 _logger.Error(ex.Message);
-                return null;
+                return new ResponseModel<List<Employee>>(false, null, ex);
             }
         }
 
-        public void Update(Company company)
+        public ResponseModel<bool> Update(Company company)
         {
             try
             {
                 _repository.Update(company);
                 _logger.Info($"The company {company.NameCompany} was updating.");
+                return new ResponseModel<bool>(true, true, null);
             }
             catch (Exception ex)
             {
                 _logger.Error(ex.Message);
+                return new ResponseModel<bool>(false, false, ex);
             }
         }
     }

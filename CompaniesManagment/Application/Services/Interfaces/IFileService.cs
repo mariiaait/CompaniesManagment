@@ -1,14 +1,15 @@
 ﻿using CompaniesManagment.DataAccess.Domains;
+using CompaniesManagment.Presentation.ResponseModel;
 
 namespace CompaniesManagment.Application.Services.Interfaces
 {
     internal interface IFileService
     {
-        List<Company>? Get();
-        void Add(Company company);
-        void Update(Company company);
-        void Delete(Guid id);
-        Company? GetById(Guid id);
-        List<Employee>? GetEmployeesById(Guid id);
+        ResponseModel<List<Company>>? Get();
+        ResponseModel<bool> Add(Company company);
+        ResponseModel<bool> Update(Company company);
+        ResponseModel<bool> Delete(Guid id);
+        ResponseModel<Company>? GetById(Guid id);
+        ResponseModel<List<Employee>>? GetEmployeesById(Guid id);
     }
 }
