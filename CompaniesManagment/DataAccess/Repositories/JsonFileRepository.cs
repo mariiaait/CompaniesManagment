@@ -1,6 +1,7 @@
 ﻿using CompaniesManagment.DataAccess.Contexts.Interfaces;
 using CompaniesManagment.DataAccess.Domains;
 using CompaniesManagment.DataAccess.Repositories.Interfaces;
+using CompaniesManagment.Infrastructure.Exceptions;
 using System.Text.Json;
 
 namespace CompaniesManagment.DataAccess.Repositories
@@ -22,6 +23,10 @@ namespace CompaniesManagment.DataAccess.Repositories
                 companies.Add(company);
                 Serialize(companies);
             }
+            else
+            {
+                throw new CompanyException("Company with such name already exists.");
+            }
         }
 
         public void Delete(Guid id)
@@ -29,6 +34,10 @@ namespace CompaniesManagment.DataAccess.Repositories
             var companies = Get();
             var company = companies?.FirstOrDefault(company => company.Id == id);
             if (company != null) { companies.Remove(company); }
+            else
+            {
+                throw new CompanyException("Company with such id doesn't exist.");
+            }
             Serialize(companies);
         }
 
