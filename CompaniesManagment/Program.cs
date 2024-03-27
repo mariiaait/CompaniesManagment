@@ -31,12 +31,14 @@ namespace CompaniesManagment
             Console.WriteLine(service.Get().ToString());
 
             Console.WriteLine("\nTesting GetById");
-            Console.WriteLine(service.GetById(new Guid("32e0adfd-d4a5-4bec-9edd-8702ecf737d8")));
+            Console.WriteLine(service.GetById(new Guid("32e0adfd-d4a5-4bec-9edd-8702ecf737d9")));
 
             Console.WriteLine("\nTesting GetEmployeesById");
             Console.WriteLine(service.GetEmployeesById(new Guid("32e0adfd-d4a5-4bec-9edd-8702ecf737d8")));
 
             Console.WriteLine("\nTesting Add - adding new company 987Soft");
+            Console.WriteLine(service.Add(new Company { NameCompany = "987Soft", Employees = null }));
+
             Console.WriteLine(service.Add(new Company { NameCompany = "987Soft", Employees = null }));
 
             Console.WriteLine("\nTesting Delete - deleted ABCSoft");
